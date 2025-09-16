@@ -56,4 +56,59 @@
     .social-icons a {
       margin: 0 10px;
       color: #333;
-      font-size
+      font-size: 24px;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #ff6f61;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">Brand & Bestow</div>
+  <h1>We're Launching Soon</h1>
+  <p class="subtitle">Something great is on its way. Stay tuned for the big reveal.</p>
+
+  <div class="countdown" id="countdown">Loading countdown...</div>
+
+  <div class="social-icons">
+    <a href="https://instagram.com/yourprofile" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://tiktok.com/@yourprofile" target="_blank"><i class="fab fa-tiktok"></i></a>
+  </div>
+
+  <footer>© 2025 Brand & Bestow. All rights reserved.</footer>
+
+  <script>
+    // Countdown Timer
+    const launchDate = new Date("2025-10-15T00:00:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = launchDate - now;
+
+      if (distance < 0) {
+        countdownEl.innerHTML = "We're live!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    };
+
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
